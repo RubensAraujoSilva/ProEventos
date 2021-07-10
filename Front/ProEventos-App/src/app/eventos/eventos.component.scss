@@ -1,0 +1,12 @@
+h4{
+  background-color: aquamarine;
+  padding: 20px 5px;
+  border-radius: 10px 10px 0px 0px;
+  display: flex;
+  border-bottom: 2px solid black;
+}
+h4:hover{
+  color: aquamarine;
+  background-color: black;
+  box-shadow: black;
+}

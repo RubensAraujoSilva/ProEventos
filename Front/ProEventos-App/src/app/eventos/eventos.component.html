@@ -1,0 +1,12 @@
+<h4>Lista de eventos futuros</h4>
+
+<div *ngFor="let evento of eventos" class="p-2">
+  <p><b>Código: </b>{{evento.eventoId}}</p>
+  <p><b>Local: </b>{{evento.local}}</p>
+  <p><b>Data: </b>{{evento.dataEvento}}</p>
+  <p><b>Tema: </b>{{evento.tema}}</p>
+  <p><b>Quantidade de Pessoas: </b>{{evento.qtdPessoas}}</p>
+  <p><b>Lote: </b>{{evento.lote}}</p>
+  <p><b>Foto: </b>{{evento.imageURL}}</p>
+  <hr>
+</div>
