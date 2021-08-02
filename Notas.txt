@@ -1,0 +1,53 @@
+Organizando o Projeto API em Camdas 
+1 - Aplicação 
+2 - Persistencia 
+3 - Domínio
+
+Criar uma Solução na raiz do projeto src
+-Comando: dotnet new sls -n ProEventos
+
+Criar 3x Class Libary
+1: Biblioteca de Classe: Aplicação
+-Comando: dotnet new classlib -n ProEventos.Aplication
+
+2: Biblioteca de Classe: Persistencia 
+-Comando: dotnet new classlib -n ProEventos.Persistence
+
+3: Biblioteca de Classe: Domínio
+-Comando: dotnet new classlib -n ProEventos.Domain
+
+------------------------------------------------------
+Referenciando os Projetos na Solução Principal:
+dotnet sln ProEventos.sln add ProEventos.Aplication
+dotnet sln ProEventos.sln add ProEventos.Domain
+dotnet sln ProEventos.sln add ProEventos.Persistence
+dotnet sln ProEventos.sln add ProEventos.Persistence
+
+Ao concluir as referências comnpile o projeto, com isso analisamos se não 
+ocorreu algum erro em nossa Aplicação.
+
+------------------------------------------------------
+Referenciando os projetos necessários da API:
+dotnet add ProEventos.API\ProEventos.API.csproj reference ProEventos.Aplication
+
+Referenciando os projetos necessários da Aplicação:
+dotnet add ProEventos.Aplication\ProEventos.Aplication.csproj reference ProEventos.Domain
+dotnet add ProEventos.Aplication\ProEventos.Aplication.csproj reference ProEventos.Persistence
+
+Referenciando os projetos necessários da Persistencia:
+dotnet add ProEventos.Persistence\ProEventos.Persistence.csproj reference ProEventos.Domain
+
+Compile o projeto ao incluir todas as referências:
+dotnet build
+
+------------------------------------------------------
+CRIANDO Modelos de Domínio 
+Os Modelos de Domínios são nossas classes 
+
+Nosso DataContext Ficará no Projeto.Persistence, será necessário instalar o 
+EFCore 
+
+Rodando uma Migration: 
+-p : Projeto que Contém o contexto do EF Core
+-s : Projeto que Contem a Classe Startup
+dotnet ef migrations add Initial -p .\ProEventos.Persistence\ -s .\ProEventos.API
